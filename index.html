@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oddity Hub | Student Writing Service</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --bg-soft: #ffffff;
+        --primary: #1e3a8a;
+        --accent: #d4af37;
+        --text-main: #1f2933;
+        --text-soft: #6b7280;
+        --border-soft: #e5e7eb;
+        --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.08);
+        --radius-lg: 18px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #eef2ff 0, #f8fafc 55%, #fff 100%);
+        color: var(--text-main);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: rgba(248, 250, 252, 0.9);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0.7rem 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+        background: #fff;
+      }
+
+      .brand-text-main {
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        font-size: 0.95rem;
+      }
+
+      .brand-text-sub {
+        font-size: 0.7rem;
+        color: var(--text-soft);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .nav-links a {
+        position: relative;
+        padding-bottom: 0.1rem;
+        color: var(--text-soft);
+        font-weight: 500;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.16rem;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        border-radius: 999px;
+        transition: width 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-cta {
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #1d4ed8, #0f766e);
+        color: #f9fafb;
+        font-size: 0.82rem;
+        font-weight: 600;
+        box-shadow: 0 12px 26px rgba(15, 23, 42, 0.25);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 32px rgba(15, 23, 42, 0.3);
+      }
+
+      .nav-cta:active {
+        transform: translateY(0);
+        box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
+      }
+
+      .nav-toggle {
+        display: none;
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+
+      .nav-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #1f2937;
+        border-radius: 999px;
+        margin: 4px 0;
+      }
+
+      /* LAYOUT */
+      main {
+        flex: 1;
+      }
+
+      section {
+        padding: 3.5rem 1.4rem;
+      }
+
+      .section-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        margin-bottom: 1.8rem;
+      }
+
+      .section-label {
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-soft);
+        font-weight: 600;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-top: 0.35rem;
+      }
+
+      .section-subtitle {
+        margin-top: 0.35rem;
+        font-size: 0.95rem;
+        color: var(--text-soft);
+        max-width: 540px;
+      }
+
+      /* HERO */
+      #home {
+        padding-top: 3.1rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+        align-items: center;
+        gap: 2.6rem;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.16rem 0.6rem;
+        border-radius: 999px;
+        background: rgba(209, 213, 219, 0.3);
+        border: 1px solid rgba(209, 213, 219, 0.7);
+        font-size: 0.75rem;
+        color: var(--text-soft);
+        margin-bottom: 0.7rem;
+      }
+
+      .hero-title {
+        font-size: clamp(1.9rem, 3vw, 2.4rem);
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      .hero-highlight {
+        background: linear-gradient(120deg, #1d4ed8, #0f766e, #f59e0b);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .hero-text {
+        margin-top: 0.9rem;
+        font-size: 0.98rem;
+        color: var(--text-soft);
+        max-width: 480px;
+      }
+
+      .hero-cta-row {
+        margin-top: 1.6rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        align-items: center;
+      }
+
+      .hero-primary {
+        padding: 0.7rem 1.5rem;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, #1d4ed8, #0f766e);
+        color: #f9fafb;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+
+      .hero-primary span {
+        font-size: 1.2rem;
+      }
+
+      .hero-secondary {
+        font-size: 0.9rem;
+        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .hero-secondary::after {
+        content: "→";
+        font-size: 0.9rem;
+      }
+
+      .hero-note {
+        margin-top: 0.8rem;
+        font-size: 0.75rem;
+        color: var(--text-soft);
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 26px;
+        padding: 1.4rem 1.4rem 1.2rem;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+      }
+
+      .hero-logo-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .hero-logo-circle {
+        width: 154px;
+        height: 154px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #fff;
+        border: 4px solid rgba(212, 175, 55, 0.7);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+      }
+
+      .hero-mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+        font-size: 0.78rem;
+      }
+
+      .hero-pill {
+        border-radius: 14px;
+        padding: 0.7rem 0.8rem;
+        background: #f9fafb;
+        border: 1px solid var(--border-soft);
+      }
+
+      .hero-pill strong {
+        font-size: 0.8rem;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      /* ABOUT */
+      #about .section-body {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+        gap: 2.1rem;
+      }
+
+      .about-card {
+        padding: 1.3rem 1.4rem;
+        border-radius: var(--radius-lg);
+        background: var(--bg-soft);
+        border: 1px solid var(--border-soft);
+      }
+
+      .about-points {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.4rem;
+        font-size: 0.9rem;
+      }
+
+      .about-pill-row {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+
+      .about-pill {
+        font-size: 0.78rem;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        border: 1px dashed rgba(148, 163, 184, 0.8);
+        color: var(--text-soft);
+      }
+
+      .about-side {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .about-stat {
+        padding: 0.8rem 1rem;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #eff6ff, #fef9c3);
+        border: 1px solid rgba(191, 219, 254, 0.9);
+        font-size: 0.86rem;
+      }
+
+      .about-stat strong {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+      }
+
+      /* CONDITIONS */
+      #conditions {
+        background: radial-gradient(circle at top, #eef2ff 0, #f8fafc 40%, #fff 100%);
+      }
+
+      .conditions-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.1fr);
+        gap: 2.1rem;
+      }
+
+      .conditions-card {
+        background: var(--bg-soft);
+        border-radius: var(--radius-lg);
+        padding: 1.4rem 1.4rem 1.1rem;
+        border: 1px solid var(--border-soft);
+        box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+      }
+
+      .conditions-list {
+        list-style: none;
+        display: grid;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+      }
+
+      .conditions-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .conditions-badge {
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.08);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.68rem;
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      .conditions-note {
+        margin-top: 0.9rem;
+        padding: 0.6rem 0.75rem;
+        border-radius: 10px;
+        background: rgba(248, 250, 252, 0.9);
+        border: 1px dashed rgba(148, 163, 184, 0.8);
+        font-size: 0.8rem;
+        color: var(--text-soft);
+      }
+
+      .conditions-side {
+        border-radius: var(--radius-lg);
+        padding: 1.1rem 1.2rem;
+        background: linear-gradient(135deg, #0f172a, #1d2841);
+        color: #e5e7eb;
+      }
+
+      .conditions-side h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .conditions-side p {
+        font-size: 0.87rem;
+        color: #cbd5f5;
+      }
+
+      /* PRICING */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+        align-items: stretch;
+      }
+
+      .pricing-card,
+      .sample-card {
+        background: var(--bg-soft);
+        border-radius: 22px;
+        padding: 1.5rem 1.4rem 1.2rem;
+        border: 1px solid var(--border-soft);
+        box-shadow: var(--shadow-soft);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .pricing-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0.7rem 0.1rem;
+        border-bottom: 1px dashed rgba(209, 213, 219, 0.9);
+        font-size: 0.95rem;
+      }
+
+      .pricing-row:last-child {
+        border-bottom: none;
+      }
+
+      .price {
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .pricing-mini {
+        margin-top: 0.9rem;
+        font-size: 0.8rem;
+        color: var(--text-soft);
+      }
+
+      .sample-placeholder {
+        margin-top: 0.8rem;
+        border-radius: 14px;
+        border: 1px solid rgba(209, 213, 219, 0.9);
+        background: repeating-linear-gradient(
+          to bottom,
+          #fefefe,
+          #fefefe 12px,
+          #e5e7eb 13px
+        );
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #9ca3af;
+        font-size: 0.85rem;
+        text-align: center;
+        padding: 0.6rem;
+      }
+
+      /* CONNECTIONS */
+      #connections {
+        background: #f9fafb;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .connections-card {
+        background: #ffffff;
+        border-radius: var(--radius-lg);
+        padding: 1.4rem 1.4rem 1.1rem;
+        border: 1px solid var(--border-soft);
+      }
+
+      .connection-list {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .connection-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.7rem;
+        padding: 0.7rem 0.1rem;
+        border-bottom: 1px dashed rgba(209, 213, 219, 0.9);
+      }
+
+      .connection-item:last-child {
+        border-bottom: none;
+      }
+
+      .connection-left {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .icon-pill {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+
+      .icon-ig {
+        background: radial-gradient(circle at 30% 30%, #f9a8d4, #fb923c, #facc15);
+        color: #fff;
+      }
+
+      .icon-mail {
+        background: #eef2ff;
+        color: #1d4ed8;
+      }
+
+      .icon-tg {
+        background: #e0f2fe;
+        color: #0284c7;
+      }
+
+      .connection-label {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .connection-detail {
+        font-size: 0.8rem;
+        color: var(--text-soft);
+      }
+
+      .connection-link {
+        font-size: 0.8rem;
+        color: var(--primary);
+        font-weight: 500;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 1.5rem 1.4rem 2rem;
+        font-size: 0.78rem;
+        color: var(--text-soft);
+        text-align: center;
+      }
+
+      footer span {
+        color: var(--primary);
+        font-weight: 500;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 880px) {
+        .hero-grid,
+        #about .section-body,
+        .conditions-grid,
+        .pricing-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .hero-card {
+          order: -1;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .nav-inner {
+          padding-inline: 1rem;
+        }
+
+        .nav-links {
+          position: absolute;
+          inset-inline: 0;
+          top: 100%;
+          background: rgba(248, 250, 252, 0.98);
+          padding: 0.9rem 1.4rem 0.9rem;
+          border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+          flex-direction: column;
+          align-items: flex-start;
+          transform-origin: top;
+          transform: scaleY(0);
+          opacity: 0;
+          pointer-events: none;
+          transition: transform 0.16s ease, opacity 0.16s ease;
+        }
+
+        .nav-links.open {
+          transform: scaleY(1);
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .nav-cta {
+          width: 100%;
+          justify-content: center;
+          display: flex;
+        }
+
+        .nav-toggle {
+          display: block;
+        }
+
+        section {
+          padding-inline: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="navbar">
+        <div class="nav-inner">
+          <div class="brand">
+            <div class="brand-logo">
+              <!-- Use your logo file name here -->
+              <img src="LOGO.png" alt="Oddity Hub logo" />
+            </div>
+            <div>
+              <div class="brand-text-main">ODDITY HUB</div>
+              <div class="brand-text-sub">Writing Service</div>
+            </div>
+          </div>
+
+          <nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+              <a href="#home">Home</a>
+              <a href="#about">About</a>
+              <a href="#conditions">Conditions</a>
+              <a href="#pricing">Pricing</a>
+              <a href="#connections">Connections</a>
+              <button
+                class="nav-cta"
+                onclick="document.getElementById('connections').scrollIntoView({behavior: 'smooth'})"
+              >
+                Book Your Pages
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- HOME / HERO -->
+        <section id="home">
+          <div class="section-inner hero-grid">
+            <div>
+              <div class="hero-badge">
+                ✍️ Student‑Friendly Handwriting Service
+              </div>
+              <h1 class="hero-title">
+                <span class="hero-highlight">Handwritten work</span> service for
+                your school assignments and notes.
+              </h1>
+              <p class="hero-text">
+                Oddity Hub writes your given content into notebooks or files for
+                school use. You send the content, we write it for you in simple
+                handwriting.
+              </p>
+
+              <div class="hero-cta-row">
+                <button
+                  class="hero-primary"
+                  onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})"
+                >
+                  Check pricing
+                  <span>₹</span>
+                </button>
+                <a
+                  href="#connections"
+                  class="hero-secondary"
+                >
+                  Message us to start
+                </a>
+              </div>
+
+              <p class="hero-note">
+                For school students only • Simple language • We only write what
+                you provide.
+              </p>
+            </div>
+
+            <aside class="hero-card">
+              <div class="hero-logo-wrap">
+                <div class="hero-logo-circle">
+                  <img src="LOGO.png" alt="Oddity Hub logo big" />
+                </div>
+              </div>
+              <div class="hero-mini-grid">
+                <div class="hero-pill">
+                  <strong>Written Work</strong>
+                  Handwritten pages for your school files, charts, and records.
+                </div>
+                <div class="hero-pill">
+                  <strong>Notes & Assignments</strong>
+                  Clean pages that are easy for teachers to read.
+                </div>
+                <div class="hero-pill">
+                  <strong>Student‑Friendly</strong>
+                  Simple language, clear layouts, and quick communication.
+                </div>
+                <div class="hero-pill">
+                  <strong>Transparent Pricing</strong>
+                  Pay only for the number of written pages you book.
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+          <div class="section-inner">
+            <div class="section-header">
+              <div class="section-label">About</div>
+              <h2 class="section-title">What is Oddity Hub?</h2>
+              <p class="section-subtitle">
+                Oddity Hub is a small student‑focused writing service. You share
+                your content (text, photos, or PDF), and we copy it into a
+                notebook or file so you can submit it in school.
+              </p>
+            </div>
+
+            <div class="section-body">
+              <div class="about-card">
+                <p>
+                  We understand that not everyone is comfortable with handwriting.
+                  Some students write slowly or feel stressed before submission
+                  dates.
+                </p>
+                <div class="about-points">
+                  <div>• We only write what you send, in a clear and simple style.</div>
+                  <div>• You decide the page size, margin style, and headings.</div>
+                  <div>
+                    • Useful for school records, fair copies, and charts.
+                  </div>
+                </div>
+                <div class="about-pill-row">
+                  <div class="about-pill">Simple & clear handwriting</div>
+                  <div class="about-pill">Friendly for all school grades</div>
+                  <div class="about-pill">Transparent rules</div>
+                </div>
+              </div>
+
+              <div class="about-side">
+                <div class="about-stat">
+                  <strong>Why students choose us</strong>
+                  Easy conversation on Instagram or Telegram, clear pricing, and
+                  honest conditions. No hidden charges.
+                </div>
+                <div class="about-stat">
+                  <strong>How it usually works</strong>
+                  You send topic + number of pages → we confirm price and days →
+                  you pay first 40% → we write and deliver within the agreed
+                  time.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONDITIONS -->
+        <section id="conditions">
+          <div class="section-inner">
+            <div class="section-header">
+              <div class="section-label">Conditions</div>
+              <h2 class="section-title">Please read before you book</h2>
+              <p class="section-subtitle">
+                These simple rules keep everything clear for both sides. By using
+                Oddity Hub, you agree to the conditions below.
+              </p>
+            </div>
+
+            <div class="conditions-grid">
+              <div class="conditions-card">
+                <ul class="conditions-list">
+                  <li>
+                    <div class="conditions-badge">1</div>
+                    <div>
+                      <strong>We only write for you.</strong><br />
+                      We do not create or correct your content. You must provide
+                      the text or material that needs to be written.
+                    </div>
+                  </li>
+                  <li>
+                    <div class="conditions-badge">2</div>
+                    <div>
+                      <strong>No responsibility for teacher checking.</strong
+                      ><br />
+                      Our duty is handwriting only. If your teacher does not
+                      check, grade, or accept the work, Oddity Hub is not
+                      responsible.
+                    </div>
+                  </li>
+                  <li>
+                    <div class="conditions-badge">3</div>
+                    <div>
+                      <strong>Delivery time: 1–7 days.</strong><br />
+                      Delivery usually takes between 1 and 7 days depending on
+                      your location, number of pages, and our current bookings.
+                    </div>
+                  </li>
+                  <li>
+                    <div class="conditions-badge">4</div>
+                    <div>
+                      <strong>First party advance: 40%.</strong><br />
+                      You pay 40% of the total amount in advance to confirm your
+                      booking. The remaining amount is paid at the time of
+                      delivery.
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="conditions-note">
+                  Tip: Book your pages a few days before your submission date so
+                  we can write calmly without rushing.
+                </div>
+              </div>
+
+              <aside class="conditions-side">
+                <h3>Friendly, but clear.</h3>
+                <p>
+                  We want every student to have access to handwritten pages when
+                  they need them. These conditions help us keep the work honest,
+                  smooth, and respectful for everyone involved.
+                </p>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRICING -->
+        <section id="pricing">
+          <div class="section-inner">
+            <div class="section-header">
+              <div class="section-label">Pricing</div>
+              <h2 class="section-title">Simple page‑based pricing</h2>
+              <p class="section-subtitle">
+                You only pay for the number of written pages. The price depends
+                on whether you want writing on one side or both sides of the
+                page.
+              </p>
+            </div>
+
+            <div class="pricing-grid">
+              <div class="pricing-card">
+                <div class="pricing-row">
+                  <div>One side writing (per page)</div>
+                  <div class="price">₹10 / page</div>
+                </div>
+                <div class="pricing-row">
+                  <div>Both sides writing (per sheet)</div>
+                  <div class="price">₹15 / sheet</div>
+                </div>
+                <p class="pricing-mini">
+                  These are base rates. Final amount can change slightly
+                  depending on total pages, charts, and extra work.
+                </p>
+                <p class="pricing-mini">
+                  We will confirm the exact price after checking your Work and content
+                </p>
+              </div>
+
+              <aside class="sample-card">
+                <strong>Extra writing options</strong>
+                <p style="font-size: 0.86rem; color: var(--text-soft); margin-top: 0.2rem;">
+                  Pricing for these depends on topic, number of slides/pages,
+                  and time needed.
+                </p>
+                <ul style="margin-top: 0.6rem; font-size: 0.86rem; color: var(--text-soft); padding-left: 1.1rem; list-style: disc;">
+                  <li>Presentation making (slides prepared from your content)</li>
+                  <li>Typing content into files or notebooks from photos / PDFs</li>
+                  <li>Manual work where AI tools cannot write or format properly</li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONNECTIONS -->
+        <section id="connections">
+          <div class="section-inner">
+            <div class="section-header">
+              <div class="section-label">Connections</div>
+              <h2 class="section-title">Contact Oddity Hub</h2>
+              <p class="section-subtitle">
+                For any writing request, message us with your class, subject,
+                number of pages, and last date of submission.
+              </p>
+            </div>
+
+            <div class="connections-card">
+              <div class="connection-list">
+                <div class="connection-item">
+                  <div class="connection-left">
+                    <div class="icon-pill icon-ig">
+                        <img src="instagramlog.png" alt="Instagram Logo "/>
+                    </div>
+                    <div>
+                      <div class="connection-label">Instagram</div>
+                      <div class="connection-detail">@oddity.hub</div>
+                    </div>
+                  </div>
+                  <a
+                    class="connection-link"
+                    href="https://www.instagram.com/oddity.hub?igsh=MTU5MGhlbW9pb3kycw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open profile
+                  </a>
+                </div>
+
+                <div class="connection-item">
+                  <div class="connection-left">
+                    <div class="icon-pill icon-mail">
+                        <img src="gmail.png" alt="Gmail Logo "/>
+                    </div>
+                    <div>
+                      <div class="connection-label">Gmail</div>
+                      <div class="connection-detail">Oddity.lhlub@gmail.com</div>
+                    </div>
+                  </div>
+                  <a
+                    class="connection-link"
+                    href="mailto:Oddity.lhlub@gmail.com?subject=Oddity%20Hub%20Writing%20Request"
+                  >
+                    Send email
+                  </a>
+                </div>
+
+                <div class="connection-item">
+                  <div class="connection-left">
+                    <div class="icon-pill icon-tg">
+                        <img src="telegram.png" alt="Telegram Logo "/>
+                    </div>
+                    <div>
+                      <div class="connection-label">Telegram</div>
+                      <div class="connection-detail">@Oddity_Hub</div>
+                    </div>
+                  </div>
+                  <a
+                    class="connection-link"
+                    href="https://t.me/Oddity_Hub"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Chat on Telegram
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div>
+          © <span>Oddity Hub</span> – Writing Service for Students.
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const navToggle = document.querySelector(".nav-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>
+
+
